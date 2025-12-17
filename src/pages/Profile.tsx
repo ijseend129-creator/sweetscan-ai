@@ -2,14 +2,16 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { useScans } from '@/hooks/useScans';
+import { useStreak } from '@/hooks/useStreak';
 import { BottomNav } from '@/components/BottomNav';
 import { Button } from '@/components/ui/button';
-import { LogOut, User, BarChart3, Calendar } from 'lucide-react';
+import { LogOut, User, BarChart3, Calendar, Flame, Snowflake, Coins } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function Profile() {
   const { user, loading: authLoading, signOut } = useAuth();
   const { scans } = useScans();
+  const { streakData } = useStreak();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -65,11 +67,42 @@ export default function Profile() {
           </div>
         </section>
 
+        {/* Streak Stats */}
+        <section className="bg-card rounded-2xl p-5 shadow-card">
+          <div className="flex items-center gap-2 mb-4">
+            <Flame className="w-5 h-5 text-orange-500" />
+            <h2 className="font-semibold text-foreground">Streak Stats</h2>
+          </div>
+
+          <div className="grid grid-cols-3 gap-3">
+            <div className="bg-muted/50 rounded-xl p-3 text-center">
+              <p className="text-xl font-bold text-orange-500">{streakData?.current_streak || 0}</p>
+              <p className="text-xs text-muted-foreground">Current</p>
+            </div>
+            <div className="bg-muted/50 rounded-xl p-3 text-center">
+              <p className="text-xl font-bold text-foreground">{streakData?.longest_streak || 0}</p>
+              <p className="text-xs text-muted-foreground">Longest</p>
+            </div>
+            <div className="bg-muted/50 rounded-xl p-3 text-center">
+              <div className="flex items-center justify-center gap-1">
+                <Snowflake className="w-4 h-4 text-primary" />
+                <p className="text-xl font-bold text-primary">{streakData?.freeze_count || 0}</p>
+              </div>
+              <p className="text-xs text-muted-foreground">Freezes</p>
+            </div>
+          </div>
+          
+          <div className="flex items-center justify-center gap-2 mt-4 pt-3 border-t border-border">
+            <Coins className="w-5 h-5 text-yellow-500" />
+            <span className="font-semibold text-foreground">{streakData?.coins || 0} coins</span>
+          </div>
+        </section>
+
         {/* Stats */}
         <section className="bg-card rounded-2xl p-5 shadow-card">
           <div className="flex items-center gap-2 mb-4">
             <BarChart3 className="w-5 h-5 text-primary" />
-            <h2 className="font-semibold text-foreground">Your Stats</h2>
+            <h2 className="font-semibold text-foreground">Scan Stats</h2>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
