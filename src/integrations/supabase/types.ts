@@ -86,6 +86,42 @@ export type Database = {
         }
         Relationships: []
       }
+      user_streaks: {
+        Row: {
+          coins: number
+          created_at: string
+          current_streak: number
+          freeze_count: number
+          id: string
+          last_check_date: string | null
+          longest_streak: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          coins?: number
+          created_at?: string
+          current_streak?: number
+          freeze_count?: number
+          id?: string
+          last_check_date?: string | null
+          longest_streak?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          coins?: number
+          created_at?: string
+          current_streak?: number
+          freeze_count?: number
+          id?: string
+          last_check_date?: string | null
+          longest_streak?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

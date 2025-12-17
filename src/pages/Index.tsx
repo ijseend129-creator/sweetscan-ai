@@ -5,6 +5,7 @@ import { useScans } from '@/hooks/useScans';
 import { BottomNav } from '@/components/BottomNav';
 import { ScanCard } from '@/components/ScanCard';
 import { EmptyState } from '@/components/EmptyState';
+import { StreakBadge } from '@/components/StreakBadge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Scan, TrendingUp, Camera } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -42,14 +43,17 @@ export default function Index() {
       {/* Header */}
       <header className="bg-card border-b border-border">
         <div className="max-w-lg mx-auto px-4 py-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl gradient-primary shadow-soft flex items-center justify-center">
-              <Scan className="w-5 h-5 text-primary-foreground" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl gradient-primary shadow-soft flex items-center justify-center">
+                <Scan className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-xl font-display font-bold text-foreground">SweetScan</h1>
+                <p className="text-sm text-muted-foreground">Track your sugar intake</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-xl font-display font-bold text-foreground">SweetScan</h1>
-              <p className="text-sm text-muted-foreground">Track your sugar intake</p>
-            </div>
+            <StreakBadge />
           </div>
         </div>
       </header>

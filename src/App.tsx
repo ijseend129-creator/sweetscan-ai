@@ -9,6 +9,7 @@ import Auth from "./pages/Auth";
 import Scan from "./pages/Scan";
 import ScanDetail from "./pages/ScanDetail";
 import Profile from "./pages/Profile";
+import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/scan" element={<Scan />} />
             <Route path="/scan/:id" element={<ScanDetail />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/shop" element={<Shop />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
